@@ -20,11 +20,12 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
+  const dev: string = "0xa0c03be2cf62f171e29e0d8766677cf4c50d58f8";
 
-  await deploy("YourContract", {
+  await deploy("FixedAmountDiscountHook", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
+    // args: [deployer], // comment if no constructor arguments
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -32,11 +33,13 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   });
 
   // Get the deployed contract
-  // const yourContract = await hre.ethers.getContract("YourContract", deployer);
+  const fixedAmountDiscountHook = await hre.ethers.getContract("FixedAmountDiscountHook", deployer);
+  const tx = await fixedAmountDiscountHook.transferOwnership(dev);
+  console.log("FixedAmountDiscountHook TransferOwnership:: ", tx.hash);
 };
 
 export default deployYourContract;
 
 // Tags are useful if you have multiple deploy files and only want to run one of them.
 // e.g. yarn deploy --tags YourContract
-deployYourContract.tags = ["YourContract"];
+deployYourContract.tags = ["FixedAmountDiscountHook"];
