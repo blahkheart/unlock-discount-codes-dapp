@@ -20,7 +20,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-  const dev: string = "0xa0c03be2cf62f171e29e0d8766677cf4c50d58f8";
+  // const dev: string = "0xa0c03be2cf62f171e29e0d8766677cf4c50d58f8";
 
   await deploy("DiscountHook", {
     from: deployer,
@@ -33,9 +33,9 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   });
 
   // Get the deployed contract
-  const discountHook = await hre.ethers.getContract("DiscountHook", deployer);
-  const tx = await discountHook.transferOwnership(dev);
-  console.log("DiscountHook TransferOwnership:: ", tx.hash);
+  // const discountHook = await hre.ethers.getContract("DiscountHook", deployer);
+  // const tx = await discountHook.transferOwnership(dev);
+  // console.log("DiscountHook TransferOwnership:: ", tx.hash);
 };
 
 export default deployYourContract;

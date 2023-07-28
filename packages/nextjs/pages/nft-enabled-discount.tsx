@@ -1,14 +1,16 @@
 import type { NextPage } from "next";
 import { MetaHeader } from "~~/components/MetaHeader";
 import { CreateDiscountHook } from "~~/components/unlock/CreateDiscountHook";
+import { DeleteDiscount } from "~~/components/unlock/DeleteDiscount";
 import { GenerateDiscountSigner } from "~~/components/unlock/GenerateDiscountSigner";
+import { TokenGateDiscount } from "~~/components/unlock/TokenGateDiscount";
 
-const ExampleUI: NextPage = () => {
+const NFTEnabledDiscount: NextPage = () => {
   return (
     <>
       <MetaHeader
-        title="Example UI | Scaffold-ETH 2"
-        description="Example UI created with 🏗 Scaffold-ETH 2, showcasing some of its features."
+        title="Token Gated Discount Hook"
+        description="Create discounts that are enabled by owning specific lock NFTs"
       >
         {/* We are importing the font this way to lighten the size of SE2. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,10 +18,12 @@ const ExampleUI: NextPage = () => {
       </MetaHeader>
       <div className="grid lg:grid-cols-2 flex-grow" data-theme="exampleUi">
         <GenerateDiscountSigner />
-        <CreateDiscountHook />
+        <CreateDiscountHook contractName="NFTEnabledDiscountHook" />
+        <TokenGateDiscount />
+        <DeleteDiscount contractName="NFTEnabledDiscountHook" />
       </div>
     </>
   );
 };
 
-export default ExampleUI;
+export default NFTEnabledDiscount;
