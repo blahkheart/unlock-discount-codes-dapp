@@ -28,7 +28,7 @@ export const CreateDiscountHook: React.FC<Props> = ({ contractName }) => {
   const { data: deployedContractData, isLoading: deployedContractLoading } = useDeployedContractInfo(contractName);
   if (deployedContractLoading) {
     return (
-      <div className="mt-14">
+      <div className="mt-6 pt-6 flex items-center justify-center">
         <Spinner width="50px" height="50px" />
       </div>
     );
@@ -45,7 +45,9 @@ export const CreateDiscountHook: React.FC<Props> = ({ contractName }) => {
             <strong className="mr-4">Hook Address:</strong> <Address address={deployedContractData?.address} />
           </h1>
           <div className="text-center">
-            <span className="text-4xl sm:text-5xl text-black">Set Discount For Lock</span>
+            <div>
+              <span className="text-4xl sm:text-5xl text-black">Set Discount For Lock</span>
+            </div>
             {contractName !== "FixedAmountDiscountHook" && (
               <div className="badge badge-warning mt-3 justify-center">
                 <strong>Enter discount amount as basis points i.e %100 = 10000 </strong>

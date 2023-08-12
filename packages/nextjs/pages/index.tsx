@@ -1,65 +1,33 @@
-import Link from "next/link";
 import type { NextPage } from "next";
-import { BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { MetaHeader } from "~~/components/MetaHeader";
+import { CreateDiscountHook } from "~~/components/unlock/CreateDiscountHook";
+import { DeleteDiscount } from "~~/components/unlock/DeleteDiscount";
+import { GenerateDiscountSigner } from "~~/components/unlock/GenerateDiscountSigner";
+import { CopyIcon } from "~~/components/unlock/assets/CopyIcon";
+import { DiamondIcon } from "~~/components/unlock/assets/DiamondIcon";
+import { HareIcon } from "~~/components/unlock/assets/HareIcon";
 
-const Home: NextPage = () => {
+const StandardDiscount: NextPage = () => {
   return (
     <>
-      <MetaHeader />
-      <div className="flex items-center flex-col flex-grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center mb-8">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-          </h1>
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold">packages/nextjs/pages/index.tsx</code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract <code className="italic bg-base-300 text-base font-bold">YourContract.sol</code> in{" "}
-            <code className="italic bg-base-300 text-base font-bold">packages/hardhat/contracts</code>
-          </p>
-        </div>
-
-        <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contract
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <SparklesIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Experiment with{" "}
-                <Link href="/example-ui" passHref className="link">
-                  Example UI
-                </Link>{" "}
-                to build your own UI.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-          </div>
+      <MetaHeader title="Standard Discount Hook" description="Create percentage discounts for your locks">
+        {/* We are importing the font this way to lighten the size of SE2. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap" rel="stylesheet" />
+      </MetaHeader>
+      <div className="grid lg:grid-cols-2 flex-grow" data-theme="exampleUi">
+        <GenerateDiscountSigner />
+        <CreateDiscountHook contractName="DiscountHook" />
+        <DeleteDiscount contractName="DiscountHook" />
+        {/* component below serves as page filler for aethestics only */}
+        <div className="hidden lg:flex bg-base-300 relative pb-10">
+          <DiamondIcon className="absolute top-24" />
+          <CopyIcon className="absolute bottom-0 left-36" />
+          <HareIcon className="absolute right-0 bottom-24" />
         </div>
       </div>
     </>
   );
 };
 
-export default Home;
+export default StandardDiscount;

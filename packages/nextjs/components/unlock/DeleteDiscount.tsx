@@ -5,7 +5,6 @@ import { HareIcon } from "./assets/HareIcon";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
-
 interface Props {
   contractName: "DiscountHook" | "FixedAmountDiscountHook" | "NFTEnabledDiscountHook";
 }
