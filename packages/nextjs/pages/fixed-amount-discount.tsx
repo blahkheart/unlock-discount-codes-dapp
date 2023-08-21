@@ -5,9 +5,7 @@ import { CreateDiscountHook } from "~~/components/unlock/CreateDiscountHook";
 import { DeleteDiscount } from "~~/components/unlock/DeleteDiscount";
 import { GenerateDiscountSigner } from "~~/components/unlock/GenerateDiscountSigner";
 import { RemoveStableCoin } from "~~/components/unlock/RemoveStableCoin";
-import { CopyIcon } from "~~/components/unlock/assets/CopyIcon";
-import { DiamondIcon } from "~~/components/unlock/assets/DiamondIcon";
-import { HareIcon } from "~~/components/unlock/assets/HareIcon";
+import { TokenGateDiscount } from "~~/components/unlock/TokenGateDiscount";
 
 const FixedAmountDiscount: NextPage = () => {
   return (
@@ -20,15 +18,10 @@ const FixedAmountDiscount: NextPage = () => {
       <div className="grid lg:grid-cols-2 flex-grow" data-theme="exampleUi">
         <AddStableCoin />
         <RemoveStableCoin />
-        <GenerateDiscountSigner />
         <CreateDiscountHook contractName="FixedAmountDiscountHook" />
+        <GenerateDiscountSigner />
+        <TokenGateDiscount contractName="FixedAmountDiscountHook" />
         <DeleteDiscount contractName="FixedAmountDiscountHook" />
-        {/* component below serves as page filler for aethestics only */}
-        <div className="hidden lg:flex bg-base-300 relative pb-10">
-          <DiamondIcon className="absolute top-24" />
-          <CopyIcon className="absolute bottom-0 left-36" />
-          <HareIcon className="absolute right-0 bottom-24" />
-        </div>
       </div>
     </>
   );

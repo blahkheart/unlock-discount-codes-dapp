@@ -19,7 +19,7 @@ const NFTEnabledDiscount: NextPage = () => {
       <div className="grid lg:grid-cols-2 flex-grow" data-theme="exampleUi">
         <GenerateDiscountSigner />
         <CreateDiscountHook contractName="NFTEnabledDiscountHook" />
-        <TokenGateDiscount />
+        <TokenGateDiscount contractName="NFTEnabledDiscountHook" />
         <DeleteDiscount contractName="NFTEnabledDiscountHook" />
       </div>
     </>

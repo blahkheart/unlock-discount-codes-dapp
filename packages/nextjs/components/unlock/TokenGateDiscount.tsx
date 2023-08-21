@@ -5,13 +5,17 @@ import { HareIcon } from "./assets/HareIcon";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
-export const TokenGateDiscount = () => {
+interface Props {
+  contractName: "DiscountHook" | "FixedAmountDiscountHook" | "NFTEnabledDiscountHook";
+}
+
+export const TokenGateDiscount: React.FC<Props> = ({ contractName }) => {
   const [lock, setLock] = useState("");
   const [signer, setSigner] = useState("");
   const [requiredLock, setRequiredLock] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
-    contractName: "NFTEnabledDiscountHook",
+    contractName,
     functionName: "setLockEnabledDiscount",
     args: [lock, signer, requiredLock],
     onBlockConfirmation: txnReceipt => {
