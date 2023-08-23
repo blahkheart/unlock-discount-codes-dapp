@@ -26,7 +26,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "polygonMumbai",
+  defaultNetwork: "bsc",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -89,6 +89,14 @@ const config: HardhatUserConfig = {
       zksync: true,
       accounts: [deployerPrivateKey],
       verifyURL: "https://zksync2-mainnet-explorer.zksync.io/contract_verification",
+    },
+    bscTestnet: {
+      url: "https://bsc-testnet.publicnode.com",
+      accounts: [deployerPrivateKey],
+    },
+    bsc: {
+      url: "https://bsc-dataseed1.binance.org",
+      accounts: [deployerPrivateKey],
     },
   },
   verify: {

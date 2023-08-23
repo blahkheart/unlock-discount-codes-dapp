@@ -20,7 +20,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-  const dev: string = "0xa0c03be2cf62f171e29e0d8766677cf4c50d58f8";
+  // const dev: string = "0xa0c03be2cf62f171e29e0d8766677cf4c50d58f8";
 
   await deploy("FixedAmountDiscountHook", {
     from: deployer,
@@ -33,15 +33,15 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   });
 
   // Get the deployed contract
-  const fixedAmountDiscountHook = await hre.ethers.getContract("FixedAmountDiscountHook", deployer);
-  const discountHook = await hre.ethers.getContract("DiscountHook", deployer);
-  const nftEnabledDiscountHook = await hre.ethers.getContract("NFTEnabledDiscountHook", deployer);
-  const tx = await fixedAmountDiscountHook.transferOwnership(dev);
-  const tx_2 = await discountHook.transferOwnership(dev);
-  const tx_3 = await nftEnabledDiscountHook.transferOwnership(dev);
-  console.log("FixedAmountDiscountHook TransferOwnership:: ", tx.hash);
-  console.log("DiscountHook TransferOwnership:: ", tx_2.hash);
-  console.log("NFTEnabledDiscountHook TransferOwnership:: ", tx_3.hash);
+  // const fixedAmountDiscountHook = await hre.ethers.getContract("FixedAmountDiscountHook", deployer);
+  // const discountHook = await hre.ethers.getContract("DiscountHook", deployer);
+  // const nftEnabledDiscountHook = await hre.ethers.getContract("NFTEnabledDiscountHook", deployer);
+  // const tx = await fixedAmountDiscountHook.transferOwnership(dev);
+  // const tx_2 = await discountHook.transferOwnership(dev);
+  // const tx_3 = await nftEnabledDiscountHook.transferOwnership(dev);
+  // console.log("FixedAmountDiscountHook TransferOwnership:: ", tx.hash);
+  // console.log("DiscountHook TransferOwnership:: ", tx_2.hash);
+  // console.log("NFTEnabledDiscountHook TransferOwnership:: ", tx_3.hash);
 };
 
 export default deployYourContract;
